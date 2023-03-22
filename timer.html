@@ -12,16 +12,17 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: darkslateblue;
+            background-color: var(--bg-color, white);
         }
-
+    
         h1 {
             font-size: 100px;
             text-align: top;
             margin: 0;
         }
-
-    </style>
+    
+    </style>    
+<input type="color" onchange="document.body.style.setProperty('--bg-color', this.value);">
 
 <script type="text/javascript">
 function updateTitle() {

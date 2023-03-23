@@ -5,6 +5,12 @@
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/27/27133.png">
     <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
     <style>
+        #color-picker {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
         body {
             display: flex;
             flex-direction: column;
@@ -17,12 +23,13 @@
     
         h1 {
             font-size: 100px;
-            text-align: top;
             margin: 0;
+            position: absolute;
+            top: 0;
         }
     
     </style>    
-<input type="color" onchange="document.body.style.setProperty('--bg-color', this.value);">
+<input id="color-picker" type="color" onchange="document.body.style.setProperty('--bg-color', this.value);">
 
 <script type="text/javascript">
 function updateTitle() {
@@ -84,11 +91,11 @@ function Clock() {
 
     function updateTime() {
         sec++;
-        if (sec > 60) {
+        if (sec == 60) {
             min++;
             sec = 0;
         }
-        if (min > 60) {
+        if (min == 60) {
             hours++;
             min = 0;
         }
@@ -116,7 +123,6 @@ function Clock() {
         isRunning = false;
         m.redraw();
     }
-
 
     return {
     view: () => m("div", { style: "display:flex;flex-direction:column;align-items:center;" }, [

@@ -17,7 +17,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: var(--bg-color, red);
+            background-color: var(--bg-color, grey);
         }
 
         h1 {
@@ -67,7 +67,7 @@ function updateTitle() {
 <body>
     <h1>Countdown</h1>
     <div style="position: fixed; bottom: 10px; left: 10px; font-size: 19px;">
-        <a style="text-decoration: underline;" style="text-decoration: none; color: lightskyblue;" href="stopwatch.html">Stopwatch</a>
+        <a style="text-decoration: underline;" style="text-decoration: none; color: brown;" href="stopwatch.html">Stopwatch</a>
     </div>
     <div id="app"></div>  
 
@@ -280,7 +280,7 @@ return {
         view: () => {
             return m("div", [
                 m("div", { style: "display:flex;flex-direction:row;gap:300px;margin-bottom:5px;"}, [
-                m("input", {id: "hours-input", type: "number", min: "0", max: "23", value: "0"}),
+                m("input", {id: "hours-input", type: "number", min: "0", max: "99", value: "0"}),
                 m("input", {id: "minutes-input", type: "number", min: "0", max: "59", value: "0"}),
                 m("input", {id: "seconds-input", type: "number", min: "0", max: "59", value: "0"}),
                 ]),

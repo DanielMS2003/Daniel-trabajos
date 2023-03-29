@@ -47,9 +47,9 @@ function updateTitle() {
 <body>
     <h1>Stopwatch</h1>
     <div id="app"></div>
-    <div style="position: fixed; bottom: 0; left: 0;">
-        <a href="countdown.html">Countdown</a>
-      </div> 
+    <div style="position: fixed; bottom: 10px; left: 10px; font-size: 19px;">
+        <a style="text-decoration: underline;" style="text-decoration: none; color: lightskyblue;" href="countdown.html">Countdown</a>
+    </div>
 
 <script type="module">
 
@@ -139,7 +139,7 @@ function Clock() {
             m(Digit, { digit: Math.floor(sec / 10) }),
             m(Digit, { digit: sec % 10 }),
         ]),
-        m("div", { style: "display:flex;flex-direction:column;gap:6px;margin-top:20px;" }, [
+        m("div", { style: "display:flex;flex-direction:row;gap:6px;margin-top:20px;" }, [
             m("button", { onclick: startTimer }, isRunning ? "Pause" : "Start"),
             m("button", { onclick: reset }, "Reset"),
         ]),

@@ -114,6 +114,16 @@ function Clock() {
     let isRunning = false;
     let isPaused = false;
 
+    function toggleStartPause() {
+        if (!isRunning) {
+            startCountdown();
+        } else if (isPaused) {
+            resumeCountdown();
+        } else {
+            pauseCountdown();
+        }
+    }
+
     function startCountdown() {
         if (!isRunning && !isPaused) { // Add a condition to check if the countdown is already running or paused
             hours = parseInt(document.getElementById("hours-input").value);
@@ -193,16 +203,6 @@ function Clock() {
         document.getElementById("hours").innerText = hours.toString().padStart(2, '0'); // Update the hours element
         setTime(hours, min, sec);
         m.redraw();
-    }
-
-    function start() {
-        if (isRunning) {
-            return;
-        }
-
-        targetTime = Math.ceil(new Date().getTime() / 1000) * 1000 - 1000;
-        timer = setInterval(updateTime, 10);
-        isRunning = true;
     }
 
     function pauseCountdown() { // Add a function to pause the countdown
@@ -294,11 +294,9 @@ return {
                     m(Digit, {digit: Math.floor(sec / 10)}),
                     m(Digit, {digit: sec % 10}),
                 ]),
-                m("div", { style: "display:flex;flex-direction:row;gap:8px;margin-left:255px;margin-top:20px" }, [
-                m("button", {onclick: startCountdown}, "Start"),
-                m("button", {onclick: pauseCountdown}, "Pause"),
-                m("button", {onclick: resumeCountdown}, "Resume"),
-                m("button", {onclick: reset}, "Reset"),
+                m("div", { style: "display:flex;flex-direction:row;gap:8px;margin-left:325px;margin-top:20px" }, [
+                m("button", { onclick: toggleStartPause }, isRunning ? "Pause" : "Start"),
+                m("button", { onclick: reset }, "Reset"),
                 ]),
             ]);
         }

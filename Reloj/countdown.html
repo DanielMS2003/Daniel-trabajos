@@ -222,7 +222,6 @@ function Clock() {
         hours = 0;
         min = 0;
         sec = 0;
-        document.body.style.backgroundColor = "var(--bg-color, red)";
     }
 
     function setTime(newHours, newMin, newSec) {
@@ -278,11 +277,28 @@ setTargetTime(new Date().getTime() + ((hours * 60 * 60) + (min * 60) + sec) * 10
 // Define the view of the component.
 return {
         view: () => {
+            let hourList = [];
+            for (let i = 0; i <= 99; i++) {
+                hourList.push(i.toString());
+            }
+            let minSecList = [];
+            for (let i = 0; i <= 59; i++) {
+                minSecList.push(i.toString());
+            }
             return m("div", [
-                m("div", { style: "display:flex;flex-direction:row;gap:300px;margin-bottom:5px;"}, [
-                m("input", {id: "hours-input", type: "number", min: "0", max: "99", value: "0"}),
-                m("input", {id: "minutes-input", type: "number", min: "0", max: "59", value: "0"}),
-                m("input", {id: "seconds-input", type: "number", min: "0", max: "59", value: "0"}),
+            m("div", { style: "display:flex;flex-direction:row;margin-bottom:5px;"}, [
+                m("div", { style: "margin-left: 60px;" }, [
+                m("label", { for: "hours-input" }, "Hours: "),
+                m("select", { id: "hours-input" }, hourList.map(hour => m("option", { value: hour }, hour)))
+                ]),
+                m("div", { style: "margin-left: 180px;" }, [
+                m("label", { for: "minutes-input" }, "Minutes: "),
+                m("select", { id: "minutes-input" }, minSecList.map(minute => m("option", { value: minute }, minute)))
+                ]),
+                m("div", { style: "margin-left: 190px;" }, [
+                m("label", { for: "seconds-input" }, "Seconds: "),
+                m("select", { id: "seconds-input" }, minSecList.map(second => m("option", { value: second }, second)))
+                ]),
                 ]),
                 m("div", {style: "display: flex;flex-direction:row;gap:8px;"}, [
                     m(Digit, {digit: Math.floor(hours / 10)}),
@@ -294,7 +310,7 @@ return {
                     m(Digit, {digit: Math.floor(sec / 10)}),
                     m(Digit, {digit: sec % 10}),
                 ]),
-                m("div", { style: "display:flex;flex-direction:row;gap:8px;margin-left:325px;margin-top:20px" }, [
+                m("div", { style: "display:flex;flex-direction:row;gap:8px;margin-left:325px;margin-top:20px;" }, [
                 m("button", { onclick: toggleStartPause }, isRunning ? "Pause" : "Start"),
                 m("button", { onclick: reset }, "Reset"),
                 ]),

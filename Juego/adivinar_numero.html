@@ -1,0 +1,40 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el número</title>
+    <link rel="stylesheet" href="https://components.digitalvalue.es/lib/semantic.min.css">
+    <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
+    <link rel="stylesheet" href="/src/apps/Daniel-Trabajos/css/juego.css">
+</head>
+<body>
+    <div class="container">
+        <div id="timer-container">
+            <h3 id="timer">30</h3>
+        </div>
+        <h1>Adivina el número</h1>
+        <p>Elige el rango de números:</p>
+        <input type="number" id="minRange" min="1" max="999" placeholder="Mínimo" value="1">
+        <input type="number" id="maxRange" min="2" max="999" placeholder="Máximo" value="100">
+        <button id="rangeButton" onclick="selectRange()">Empezar</button>
+        <p id="rangeMessage"></p>
+        <div id="selectedNumbers"></div>
+        <p><span id="rangeText">Adivina un número dentro del rango seleccionado, tienes 30 segundos:</span></p>
+        <input type="number" id="guess" min="" max="" onkeydown="handleKeyDown(event)" disabled>
+        <button id="submit" onclick="checkGuess()" disabled>Seleccionar número</button>
+        <p id="feedback"></p>
+        <p id="hint"></p>
+        <div id="attempts">
+            <p><span id="remainingText">Intentos restantes:</span> <span id="remainingAttempts">10</span></p>
+        </div>
+        <p>Selecciona el nivel de dificultad:</p>
+        <select id="difficulty">
+            <option value="easy">Fácil</option>
+            <option value="medium">Medio</option>
+            <option value="hard">Difícil</option>
+            <option value="extreme">Extremo</option>
+        </select>
+        <button id="reset" onclick="resetGame()">Reiniciar</button>
+    </div>
+<script src="adivinar_numero.js"></script>
+</body>

@@ -1,0 +1,41 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva</title>
+    <link rel="stylesheet" href="https://components.digitalvalue.es/lib/semantic.min.css">
+    <link rel="shortcut icon" href="https://static7.depositphotos.com/1020618/769/i/950/depositphotos_7698169-stock-photo-film-countdown-1.jpg">
+    <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
+    <link rel="stylesheet" href="/src/apps/Daniel-Trabajos/css/style.css">
+
+<input id="color-picker" type="color" onchange="document.body.style.setProperty('--bg-color', this.value);">
+
+<script type="text/javascript">
+function updateTitle() {
+    if (!document.hidden) {
+        let hours = clock.hours.toString().padStart(2, '0');
+        let min = clock.min.toString().padStart(2, '0');
+        let sec = clock.sec.toString().padStart(2, '0');
+        document.title = `${hours}:${min}:${sec} - Timer`;
+    }
+}
+
+</script>
+  
+</head>    
+<body>
+    <h1>Cuenta Regresiva</h1>
+    <div id="app"></div>  
+    <div style="position: fixed; bottom: 10px; left: 10px; font-size: 19px;">
+        <a style="text-decoration: underline; color: black;" href="../Cronógrafo/cronógrafo.html">Cronógrafo</a>
+    </div>
+
+<script type="module">
+
+import { Clock, } from './CuentaRegresiva.js'
+
+let clock = Clock();
+m.mount(document.getElementById("app"), clock);
+
+</script>
+</body>

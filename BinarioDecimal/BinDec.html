@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor binario / decimal</title>
+    <link rel="stylesheet" href="https://components.digitalvalue.es/lib/semantic.min.css">
+    <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
+    <link rel="stylesheet" href="/src/apps/Daniel-Trabajos/css/BinDec.css">
+</head>
+<body>
+    <div class="container" id="binarySection">
+        <h1>Binario a Decimal</h1>
+        <label for="binaryInput">Introduzca un número binario:</label>
+        <input type="text" id="binaryInput">
+        <button onclick="binaryToDecimal()">Convertir a decimal</button>
+        <br>
+        <label for="decimalOutput">Equivalente decimal:</label>
+        <span id="decimalOutput"></span>
+        <span id="binaryError" style="color: red;"></span>
+        <br>
+        <button id="modeButton" onclick="switchMode()">Cambiar a modo: decimal a binario</button>
+    </div>
+
+    <div class="container" id="decimalSection" style="display: none;">
+        <h1>Decimal a Binario</h1>
+        <label for="decimalInput">Introduzca un número binario:</label>
+        <input type="text" id="decimalInput">
+        <button onclick="decimalToBinary()">Convertir a binario</button>
+        <br>
+        <label for="binaryOutput">Equivalente binario:</label>
+        <span id="binaryOutput"></span>
+        <br>
+        <button id="modeButton" onclick="switchMode()">Cambiar a modo: binario a decimal</button>
+    </div>
+<script src="BinDec.js"></script>
+</body>

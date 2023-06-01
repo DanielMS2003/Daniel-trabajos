@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', function() {
   
       reader.readAsText(file);
   
-      // Clear the file input value
       fileInput.value = '';
     });
   

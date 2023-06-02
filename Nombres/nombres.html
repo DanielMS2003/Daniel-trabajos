@@ -4,31 +4,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emparejamiento de nombres aleatorios</title>
     <link rel="stylesheet" href="https://components.digitalvalue.es/lib/semantic.min.css">
-    <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
     <link rel="stylesheet" href="/src/apps/Daniel-Trabajos/css/nombres.css">
 </head>
 <body>
-    <div class="container">
+    <div class="main-container">
         <h1>Emparejamiento de nombres aleatorios</h1>
+
         <div id="uploadContainer">
             <label for="fileInput" class="file-input-wrapper">
                 <span>Seleccione Archivo</span>
                 <input type="file" id="fileInput">
             </label>
         </div>
+
         <div id="manualInputContainer" class="hidden">
             <div class="input-wrapper">
-                <input type="text" id="nameInput" placeholder="Escriba nombres separado por comas (,)">
-            </div>          
-            <button id="addNameButton">Borrar Nombres</button> 
+                <input type="text" id="nameInput" placeholder="Escriba nombres separados por comas (,)">
+            </div>
+            <button id="addNameButton">Borrar Nombres</button>
             <button id="pairNamesButton">Emparejar Nombres</button>
         </div>
-        <div class="container2">
-            <div id="pairings"></div>
+
+        <div class="pairings-container">
+            <div id="pairings" class="scrollable-table"></div>
         </div>
+
         <div id="toggleButtonContainer">
             <button id="toggleButton">Cambiar a Entrada Manual</button>
         </div>
     </div>
-<script src="nombres.js"></script>
+
+    <script src="nombres.js"></script>
 </body>

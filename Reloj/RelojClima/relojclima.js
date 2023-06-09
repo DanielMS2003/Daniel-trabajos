@@ -708,23 +708,23 @@ function DigitCountdown() {
         color = vnode.attrs.color || "white";
         let border = `${wide}px solid ${color}`;
         return m("div", { style: "display: flex; flex-direction: column; width: 40px;" },
-          m("div", {
+            m("div", {
             style: {
-              width: "40px",
-              height: "40px",
-              ...([0, 2, 3, 5, 7, 8, 9].includes(digit) ? { "border-top": border } : {}),
-              ...([0, 1, 4, 5, 6, 8, 9].includes(digit) ? { "border-left": border } : {}),
-              ...([0, 2, 3, 4, 7, 8, 9].includes(digit) ? { "border-right": border } : {}),
-              ...([2, 3, 4, 5, 6, 8, 9].includes(digit) ? { "border-bottom": border } : {}),
+                width: "40px",
+                height: "40px",
+                ...([0, 2, 3, 5, 7, 8, 9].includes(digit) ? { "border-top": border } : {}),
+                ...([0, 1, 4, 5, 6, 8, 9].includes(digit) ? { "border-left": border } : {}),
+                ...([0, 2, 3, 4, 7, 8, 9].includes(digit) ? { "border-right": border } : {}),
+                ...([2, 3, 4, 5, 6, 8, 9].includes(digit) ? { "border-bottom": border } : {}),
             }
           }),
           m("div", {
             style: {
-              width: "40px",
-              height: "40px",
-              ...([0, 1, 2, 6, 8].includes(digit) ? { "border-left": border } : {}),
-              ...([0, 3, 4, 5, 6, 7, 8, 9].includes(digit) ? { "border-right": border } : {}),
-              ...([0, 2, 3, 5, 6, 8].includes(digit) ? { "border-bottom": border } : {}),
+                width: "40px",
+                height: "40px",
+                ...([0, 1, 2, 6, 8].includes(digit) ? { "border-left": border } : {}),
+                ...([0, 3, 4, 5, 6, 7, 8, 9].includes(digit) ? { "border-right": border } : {}),
+                ...([0, 2, 3, 5, 6, 8].includes(digit) ? { "border-bottom": border } : {}),
             }
           }),
         )
@@ -733,30 +733,30 @@ function DigitCountdown() {
 }
 
 function Countdown() {
-      let hours = 0;
-      let min = 0;
-      let sec = 0;
-      let targetTime;
-      let timer;
-      let isRunning = false;
-      let isPaused = false;
-      let remainingTime = 0;
-      let isVisible = false;
+    let hours = 0;
+    let min = 0;
+    let sec = 0;
+    let targetTime;
+    let timer;
+    let isRunning = false;
+    let isPaused = false;
+    let remainingTime = 0;
+    let isVisible = false;
         
     function toggleCountdown() {
         let countdownElement = document.getElementById("countdown");
         let toggleButton = document.getElementById("toggle-button");
         if (countdownElement.style.visibility === "hidden") {
-          countdownElement.style.visibility = "visible";
-          toggleButton.style.visibility = "visible";
-          isVisible = true;
+            countdownElement.style.visibility = "visible";
+            toggleButton.style.visibility = "visible";
+            isVisible = true;
         } else {
-          countdownElement.style.visibility = "hidden";
-          toggleButton.style.visibility = "visible";
-          isVisible = false;
+            countdownElement.style.visibility = "hidden";
+            toggleButton.style.visibility = "visible";
+            isVisible = false;
         }
     }     
-      
+
     function toggleStartPause() {
         if (!isRunning) {
             startCountdown();
@@ -766,7 +766,7 @@ function Countdown() {
             pauseCountdown();
         }
     }
-    
+
     function startCountdown() {
         if (!isRunning && !isPaused) {
             hours = parseInt(document.getElementById("hours-input").value);
@@ -829,7 +829,7 @@ function Countdown() {
         isPaused = true;
         isRunning = false;
     }
-    
+
     function resumeCountdown() {
         targetTime = new Date().getTime() + remainingTime;
         clearInterval(timer);
@@ -850,7 +850,7 @@ function Countdown() {
         targetTime = t;
         m.redraw();
     }
-    
+
     setTargetTime(new Date().getTime() + ((hours * 60 * 60) + (min * 60) + sec) * 1000);
 
     return {
@@ -915,16 +915,16 @@ function Countdown2() {
         let countdownElement = document.getElementById("countdown2");
         let toggleButton = document.getElementById("toggle-button2");
         if (countdownElement.style.visibility === "hidden") {
-          countdownElement.style.visibility = "visible";
-          toggleButton.style.visibility = "visible";
-          isVisible2 = true;
+            countdownElement.style.visibility = "visible";
+            toggleButton.style.visibility = "visible";
+            isVisible2 = true;
         } else {
-          countdownElement.style.visibility = "hidden";
-          toggleButton.style.visibility = "visible";
-          isVisible2 = false;
+            countdownElement.style.visibility = "hidden";
+            toggleButton.style.visibility = "visible";
+            isVisible2 = false;
         }
     }     
-      
+
     function toggleStartPause2() {
         if (!isRunning) {
             startCountdown2();
@@ -935,91 +935,91 @@ function Countdown2() {
         }
     }
 
-  function startCountdown2() {
-      if (!isRunning && !isPaused) {
-          hours2 = parseInt(document.getElementById("hours-input-2").value);
-          min2 = parseInt(document.getElementById("minutes-input-2").value);
-          sec2 = parseInt(document.getElementById("seconds-input-2").value);
-          targetTime2 = new Date().getTime() + (hours2 * 60 * 60 * 1000) + (min2 * 60 * 1000) + (sec2 * 1000);
-          clearInterval(timer2);
-          timer2 = setInterval(updateTime2, 100);
-          isRunning = true;
-      } else if (isPaused) {
-          targetTime2 = new Date().getTime() + remainingTime2;
-          clearInterval(timer2);
-          timer2 = setInterval(updateTime2, 100);
-          isPaused = false;
-          isRunning = true;
-      }
-  }
-
-  function updateTime2() {
-    let currentTime = new Date().getTime();
-    let remainingTime2 = targetTime2 - currentTime;
-
-    if (remainingTime2 <= 0) {
-        clearInterval(timer2);
-        setTimeout(() => {
-        alert("Countdown has finished!!!");
-        resetCountdown2();
-        }, 500);
-        return;
+    function startCountdown2() {
+        if (!isRunning && !isPaused) {
+            hours2 = parseInt(document.getElementById("hours-input-2").value);
+            min2 = parseInt(document.getElementById("minutes-input-2").value);
+            sec2 = parseInt(document.getElementById("seconds-input-2").value);
+            targetTime2 = new Date().getTime() + (hours2 * 60 * 60 * 1000) + (min2 * 60 * 1000) + (sec2 * 1000);
+            clearInterval(timer2);
+            timer2 = setInterval(updateTime2, 100);
+            isRunning = true;
+        } else if (isPaused) {
+            targetTime2 = new Date().getTime() + remainingTime2;
+            clearInterval(timer2);
+            timer2 = setInterval(updateTime2, 100);
+            isPaused = false;
+            isRunning = true;
+        }
     }
 
-    let newHours2 = Math.floor(remainingTime2 / (1000 * 60 * 60));
-    let newMin2 = Math.floor((remainingTime2 / (1000 * 60)) % 60);
-    let newSec2 = Math.floor((remainingTime2 / 1000) % 60);
+    function updateTime2() {
+        let currentTime = new Date().getTime();
+        let remainingTime2 = targetTime2 - currentTime;
 
-    let elapsedMs = currentTime % 1000;
-    if (remainingTime2 >= 500 && (elapsedMs + remainingTime2 >= 1000)) {
-        newSec2 = Math.ceil(newSec2);
-        if (newSec2 === 60) {
-            newSec2 = 0;
-            newMin2++;
+        if (remainingTime2 <= 0) {
+            clearInterval(timer2);
+            setTimeout(() => {
+            alert("Countdown has finished!!!");
+            resetCountdown2();
+            }, 500);
+            return;
         }
-        if (newMin2 === 60) {
-            newMin2 = 0;
-            newHours2++;
+
+        let newHours2 = Math.floor(remainingTime2 / (1000 * 60 * 60));
+        let newMin2 = Math.floor((remainingTime2 / (1000 * 60)) % 60);
+        let newSec2 = Math.floor((remainingTime2 / 1000) % 60);
+
+        let elapsedMs = currentTime % 1000;
+        if (remainingTime2 >= 500 && (elapsedMs + remainingTime2 >= 1000)) {
+            newSec2 = Math.ceil(newSec2);
+            if (newSec2 === 60) {
+                newSec2 = 0;
+                newMin2++;
+            }
+            if (newMin2 === 60) {
+                newMin2 = 0;
+                newHours2++;
+            }
+            console.log(hours2, min2, sec2);
+            m.redraw();
         }
-        console.log(hours2, min2, sec2);
+
+        hours2 = newHours2;
+        min2 = newMin2;
+        sec2 = newSec2;
         m.redraw();
     }
 
-    hours2 = newHours2;
-    min2 = newMin2;
-    sec2 = newSec2;
-    m.redraw();
-  }
-
-  function pauseCountdown2() {
-      clearInterval(timer2);
-      remainingTime2 = targetTime2 - new Date().getTime();
-      isPaused = true;
-      isRunning = false;
-  }
+    function pauseCountdown2() {
+        clearInterval(timer2);
+        remainingTime2 = targetTime2 - new Date().getTime();
+        isPaused = true;
+        isRunning = false;
+    }
   
-  function resumeCountdown2() {
-      targetTime2 = new Date().getTime() + remainingTime2;
-      clearInterval(timer2);
-      timer2 = setInterval(updateTime2, 100);
-      isPaused = false;
-      isRunning = true;
-  }       
+    function resumeCountdown2() {
+        targetTime2 = new Date().getTime() + remainingTime2;
+        clearInterval(timer2);
+        timer2 = setInterval(updateTime2, 100);
+        isPaused = false;
+        isRunning = true;
+    }       
 
-  function resetCountdown2() {
-      clearInterval(timer2);
-      isRunning = false;
-      hours2 = 0;
-      min2 = 0;
-      sec2 = 0;
-  }
+    function resetCountdown2() {
+        clearInterval(timer2);
+        isRunning = false;
+        hours2 = 0;
+        min2 = 0;
+        sec2 = 0;
+    }
 
-  function setTargetTime2(d) {
-      targetTime2 = d;
-      m.redraw();
-  }
+    function setTargetTime2(d) {
+        targetTime2 = d;
+        m.redraw();
+    }
   
-  setTargetTime2(new Date().getTime() + ((hours2 * 60 * 60) + (min2 * 60) + sec2) * 1000);
+    setTargetTime2(new Date().getTime() + ((hours2 * 60 * 60) + (min2 * 60) + sec2) * 1000);
 
     return {
         view: () => {
@@ -1083,16 +1083,16 @@ function Countdown3() {
         let countdownElement = document.getElementById("countdown3");
         let toggleButton = document.getElementById("toggle-button3");
         if (countdownElement.style.visibility === "hidden") {
-          countdownElement.style.visibility = "visible";
-          toggleButton.style.visibility = "visible";
-          isVisible3 = true;
+            countdownElement.style.visibility = "visible";
+            toggleButton.style.visibility = "visible";
+            isVisible3 = true;
         } else {
-          countdownElement.style.visibility = "hidden";
-          toggleButton.style.visibility = "visible";
-          isVisible3 = false;
+            countdownElement.style.visibility = "hidden";
+            toggleButton.style.visibility = "visible";
+            isVisible3 = false;
         }
     }     
-      
+
     function toggleStartPause3() {
         if (!isRunning) {
             startCountdown3();
@@ -1103,23 +1103,23 @@ function Countdown3() {
         }
     }
 
-  function startCountdown3() {
-      if (!isRunning && !isPaused) {
-          hours3 = parseInt(document.getElementById("hours-input-3").value);
-          min3 = parseInt(document.getElementById("minutes-input-3").value);
-          sec3 = parseInt(document.getElementById("seconds-input-3").value);
-          targetTime3 = new Date().getTime() + (hours3 * 60 * 60 * 1000) + (min3 * 60 * 1000) + (sec3 * 1000);
-          clearInterval(timer3);
-          timer3 = setInterval(updateTime3, 100);
-          isRunning = true;
-      } else if (isPaused) {
-          targetTime3 = new Date().getTime() + remainingTime3;
-          clearInterval(timer2);
-          timer3 = setInterval(updateTime3, 100);
-          isPaused = false;
-          isRunning = true;
-      }
-  }
+    function startCountdown3() {
+        if (!isRunning && !isPaused) {
+            hours3 = parseInt(document.getElementById("hours-input-3").value);
+            min3 = parseInt(document.getElementById("minutes-input-3").value);
+            sec3 = parseInt(document.getElementById("seconds-input-3").value);
+            targetTime3 = new Date().getTime() + (hours3 * 60 * 60 * 1000) + (min3 * 60 * 1000) + (sec3 * 1000);
+            clearInterval(timer3);
+            timer3 = setInterval(updateTime3, 100);
+            isRunning = true;
+        } else if (isPaused) {
+            targetTime3 = new Date().getTime() + remainingTime3;
+            clearInterval(timer2);
+            timer3 = setInterval(updateTime3, 100);
+            isPaused = false;
+            isRunning = true;
+        }
+    }
 
   function updateTime3() {
     let currentTime = new Date().getTime();
@@ -1159,35 +1159,35 @@ function Countdown3() {
     m.redraw();
   }
 
-  function pauseCountdown3() {
-      clearInterval(timer3);
-      remainingTime3 = targetTime3 - new Date().getTime();
-      isPaused = true;
-      isRunning = false;
-  }
-  
-  function resumeCountdown3() {
-      targetTime3 = new Date().getTime() + remainingTime3;
-      clearInterval(timer3);
-      timer3 = setInterval(updateTime3, 100);
-      isPaused = false;
-      isRunning = true;
-  }       
+    function pauseCountdown3() {
+        clearInterval(timer3);
+        remainingTime3 = targetTime3 - new Date().getTime();
+        isPaused = true;
+        isRunning = false;
+    }
 
-  function resetCountdown3() {
-      clearInterval(timer3);
-      isRunning = false;
-      hours3 = 0;
-      min3 = 0;
-      sec3 = 0;
-  }
+    function resumeCountdown3() {
+        targetTime3 = new Date().getTime() + remainingTime3;
+        clearInterval(timer3);
+        timer3 = setInterval(updateTime3, 100);
+        isPaused = false;
+        isRunning = true;
+    }       
 
-  function setTargetTime3(f) {
-      targetTime3 = f;
-      m.redraw();
-  }
-  
-  setTargetTime3(new Date().getTime() + ((hours3 * 60 * 60) + (min3 * 60) + sec3) * 1000);
+    function resetCountdown3() {
+        clearInterval(timer3);
+        isRunning = false;
+        hours3 = 0;
+        min3 = 0;
+        sec3 = 0;
+    }
+
+    function setTargetTime3(f) {
+        targetTime3 = f;
+        m.redraw();
+    }
+
+    setTargetTime3(new Date().getTime() + ((hours3 * 60 * 60) + (min3 * 60) + sec3) * 1000);
 
     return {
         view: () => {
@@ -1212,8 +1212,8 @@ function Countdown3() {
                     m("div", { style: "margin-left: 5; margin-right: 290;" }, [
                         m("label", { for: "seconds-input-3" }, "S: "),
                         m("select", { id: "seconds-input-3" }, minSecList3.map(second => m("option", { value: second }, second)))
-                    ])                    
-                ]),                
+                    ])
+                ]),
                 m("div", { style: "display: flex; margin-left: 170; margin-right: 245; gap: 10px; background-color: rgb(113, 94, 131); padding: 15px;" }, [
                     m(DigitCountdown, { digit: Math.floor(hours3 / 10) }),
                     m(DigitCountdown, { digit: hours3 % 10 }),
@@ -1234,6 +1234,6 @@ function Countdown3() {
             ])
         }
     }
-}   
+}
 
 export { Clock, AnalogClock, Countdown, Countdown2, Countdown3, getCurrentDate, }

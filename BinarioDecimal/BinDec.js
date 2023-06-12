@@ -14,7 +14,7 @@ function binaryToDecimal() {
         decimalOutput.textContent = decimal;
         errorOutput.textContent = '';
     } else {
-        errorOutput.textContent = 'Número binario no válido. Ingrese un número que consista únicamente en 0 y 1.';
+        errorOutput.textContent = 'ERROR: Número binario no válido. Ingrese un número que consista únicamente en 0 y 1.';
         decimalOutput.textContent = '';
     }
 }
@@ -22,7 +22,6 @@ function binaryToDecimal() {
 function decimalToBinary() {
     var decimalInput = document.getElementById('decimalInput').value;
     var binaryOutput = document.getElementById('binaryOutput');
-    var errorOutput = document.getElementById('decimalError');
 
     // Check if the input is a valid decimal number
     var isValidDecimal = /^\d+$/.test(decimalInput);
@@ -33,9 +32,7 @@ function decimalToBinary() {
 
         // Display the binary output
         binaryOutput.textContent = binary;
-        errorOutput.textContent = '';
     } else {
-        errorOutput.textContent = 'Número decimal no válido. Ingrese un número entero positivo.';
         binaryOutput.textContent = '';
     }
 }
@@ -48,25 +45,25 @@ function switchMode() {
     if (binarySection.style.display === "none") {
         binarySection.style.display = "block";
         decimalSection.style.display = "none";
-        modeButton.textContent = "Switch to Decimal to Binary";
+        modeButton.textContent = "Cambiar modo: decimal a binario";
     } else {
         binarySection.style.display = "none";
         decimalSection.style.display = "block";
-        modeButton.textContent = "Switch to Binary to Decimal";
+        modeButton.textContent = "Cambiar modo: binario a decimal";
     }
 }
 
 function handleBinaryInputKeyPress(event) {
-    if (event.keyCode === 13) {
-        binaryToDecimal();
+    if (event.key === 'Enter') {
+      binaryToDecimal();
     }
 }
-
+  
 function handleDecimalInputKeyPress(event) {
-    if (event.keyCode === 13) {
-        decimalToBinary();
+    if (event.key === 'Enter') {
+      decimalToBinary();
     }
-}
+}  
 
 document.addEventListener("DOMContentLoaded", function() {
     var binaryInput = document.getElementById('binaryInput');

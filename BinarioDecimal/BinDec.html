@@ -11,26 +11,26 @@
     <div class="container" id="binarySection">
         <h1>Binario a Decimal</h1>
         <label for="binaryInput">Introduzca un número binario:</label>
-        <input type="text" id="binaryInput">
+        <input type="text" id="binaryInput">        
         <button onclick="binaryToDecimal()">Convertir a decimal</button>
         <br>
         <label for="decimalOutput">Equivalente decimal:</label>
         <span id="decimalOutput"></span>
         <span id="binaryError" style="color: red;"></span>
         <br>
-        <button id="modeButton" onclick="switchMode()">Cambiar a modo: decimal a binario</button>
+        <button id="modeButton" onclick="switchMode()">Cambiar modo: decimal a binario</button>
     </div>
 
     <div class="container" id="decimalSection" style="display: none;">
         <h1>Decimal a Binario</h1>
-        <label for="decimalInput">Introduzca un número binario:</label>
+        <label for="decimalInput">Introduzca un número decimal:</label>
         <input type="text" id="decimalInput">
         <button onclick="decimalToBinary()">Convertir a binario</button>
         <br>
         <label for="binaryOutput">Equivalente binario:</label>
         <span id="binaryOutput"></span>
         <br>
-        <button id="modeButton" onclick="switchMode()">Cambiar a modo: binario a decimal</button>
+        <button id="modeButton" onclick="switchMode()">Cambiar modo: binario a decimal</button>
     </div>
 <script src="BinDec.js"></script>
 </body>

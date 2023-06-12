@@ -4,16 +4,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generar un número</title>
   <link rel="stylesheet" href="https://components.digitalvalue.es/lib/semantic.min.css">
-  <script src="https://components.digitalvalue.es/lib/mithril.min.js"></script>
   <link rel="stylesheet" href="/src/apps/Daniel-Trabajos/css/generador.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Generador de números aleatorios</h1>
-        <input type="number" id="minValue" min="1" max="999" placeholder="Mínimo" value="1">
-        <input type="number" id="maxValue" min="2" max="999" placeholder="Máximo" value="100">
-        <button onclick="generateRandomNumber()">Generar un número aleatorio</button>
-        <p id="result"></p>
-    </div>
+  <div class="container">
+    <h1>Generador de números aleatorios</h1>
+    <label for="minValue">Mínimo:</label>
+    <input type="number" id="minValue" min="1" max="999" placeholder="Mínimo" value="1">
+    <label for="maxValue">Máximo:</label>
+    <input type="number" id="maxValue" min="2" max="999" placeholder="Máximo" value="100">
+    <button onclick="generateRandomNumber()">Generar un número aleatorio</button>
+    <p id="result"></p>
+  </div>
 <script src="generador.js"></script>
 </body>

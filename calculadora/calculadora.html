@@ -7,28 +7,32 @@
   <link rel="stylesheet" href="/src/apps/Daniel-Trabajos/css/calculadora.css">
 </head>
 <body>
-  <div class="calculator">
-    <div class="user-input" id="userInput"></div>
-    <input type="text" id="result" placeholder="" disabled>
-    <div class="button-container">
-      <input type="button" value="1" onclick="appendInput(1)">
-      <input type="button" value="2" onclick="appendInput(2)">
-      <input type="button" value="3" onclick="appendInput(3)">
-      <input type="button" value="4" onclick="appendInput(4)">
-      <input type="button" value="5" onclick="appendInput(5)">
-      <input type="button" value="6" onclick="appendInput(6)">
-      <input type="button" value="7" onclick="appendInput(7)">
-      <input type="button" value="8" onclick="appendInput(8)">
-      <input type="button" value="9" onclick="appendInput(9)">
-      <input type="button" value="0" onclick="appendInput(0)">
-      <input type="button" value="+" onclick="appendInput('+')">
-      <input type="button" value="-" onclick="appendInput('-')">
-      <input type="button" value="&times;" onclick="appendInput('*')">
-      <input type="button" value="&divide;" onclick="appendInput('/')">
-      <input type="button" value="=" onclick="calculate()">
+  <form onsubmit="event.preventDefault(); calculate();">
+    <div class="calculator">
+      <div class="user-input" id="userInput"></div>
+      <input type="text" id="result" placeholder="" disabled>
+      <div class="button-container">
+        <input type="button" value="1" onclick="appendInput(1)">
+        <input type="button" value="2" onclick="appendInput(2)">
+        <input type="button" value="3" onclick="appendInput(3)">
+        <input type="button" value="4" onclick="appendInput(4)">
+        <input type="button" value="5" onclick="appendInput(5)">
+        <input type="button" value="6" onclick="appendInput(6)">
+        <input type="button" value="7" onclick="appendInput(7)">
+        <input type="button" value="8" onclick="appendInput(8)">
+        <input type="button" value="9" onclick="appendInput(9)">
+        <input type="button" value="0" onclick="appendInput(0)">
+        <input type="button" value="+" onclick="appendInput('+')">
+        <input type="button" value="-" onclick="appendInput('-')">
+        <input type="button" value="&times;" onclick="appendInput('*')">
+        <input type="button" value="&divide;" onclick="appendInput('/')">
+        <input type="button" value="=" onclick="calculate()">
+      </div>
+      <div class="row">
+        <input type="button" value="Limpiar" onclick="cleanInputs()">
+        <input type="button" value="Borrar" onclick="deleteLastInput()">
+      </div>
     </div>
-    <input type="button" value="Limpiar" onclick="cleanInputs()">
-    <input type="button" value="Borrar" onclick="deleteLastInput()">
-  </div>
+  </form>
   <script src="calculadora.js"></script>
 </body>

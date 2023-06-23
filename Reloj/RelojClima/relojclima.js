@@ -742,7 +742,7 @@ function Countdown() {
     let isPaused = false;
     let remainingTime = 0;
     let isVisible = false;
-        
+
     function toggleCountdown() {
         let countdownElement = document.getElementById("countdown");
         let toggleButton = document.getElementById("toggle-button");
@@ -997,7 +997,7 @@ function Countdown2() {
         isPaused = true;
         isRunning = false;
     }
-  
+
     function resumeCountdown2() {
         targetTime2 = new Date().getTime() + remainingTime2;
         clearInterval(timer2);
@@ -1018,7 +1018,7 @@ function Countdown2() {
         targetTime2 = d;
         m.redraw();
     }
-  
+
     setTargetTime2(new Date().getTime() + ((hours2 * 60 * 60) + (min2 * 60) + sec2) * 1000);
 
     return {
@@ -1091,7 +1091,7 @@ function Countdown3() {
             toggleButton.style.visibility = "visible";
             isVisible3 = false;
         }
-    }     
+    }
 
     function toggleStartPause3() {
         if (!isRunning) {
@@ -1121,43 +1121,43 @@ function Countdown3() {
         }
     }
 
-  function updateTime3() {
-    let currentTime = new Date().getTime();
-    let remainingTime3 = targetTime3 - currentTime;
+    function updateTime3() {
+        let currentTime = new Date().getTime();
+        let remainingTime3 = targetTime3 - currentTime;
 
-    if (remainingTime3 <= 0) {
-        clearInterval(timer3);
-        setTimeout(() => {
-        alert("Countdown has finished!!!");
-        resetCountdown3();
-        }, 500);
-        return;
-    }
-
-    let newHours3 = Math.floor(remainingTime3 / (1000 * 60 * 60));
-    let newMin3 = Math.floor((remainingTime3 / (1000 * 60)) % 60);
-    let newSec3 = Math.floor((remainingTime3 / 1000) % 60);
-
-    let elapsedMs = currentTime % 1000;
-    if (remainingTime3 >= 500 && (elapsedMs + remainingTime3 >= 1000)) {
-        newSec3 = Math.ceil(newSec3);
-        if (newSec3 === 60) {
-            newSec3 = 0;
-            newMin3++;
+        if (remainingTime3 <= 0) {
+            clearInterval(timer3);
+            setTimeout(() => {
+            alert("Countdown has finished!!!");
+            resetCountdown3();
+            }, 500);
+            return;
         }
-        if (newMin3 === 60) {
-            newMin3 = 0;
-            newHours3++;
-        }
-        console.log(hours3, min3, sec3);
-        m.redraw();
-    }
 
-    hours3 = newHours3;
-    min3 = newMin3;
-    sec3 = newSec3;
-    m.redraw();
-  }
+        let newHours3 = Math.floor(remainingTime3 / (1000 * 60 * 60));
+        let newMin3 = Math.floor((remainingTime3 / (1000 * 60)) % 60);
+        let newSec3 = Math.floor((remainingTime3 / 1000) % 60);
+
+        let elapsedMs = currentTime % 1000;
+        if (remainingTime3 >= 500 && (elapsedMs + remainingTime3 >= 1000)) {
+            newSec3 = Math.ceil(newSec3);
+            if (newSec3 === 60) {
+                newSec3 = 0;
+                newMin3++;
+            }
+            if (newMin3 === 60) {
+                newMin3 = 0;
+                newHours3++;
+            }
+            console.log(hours3, min3, sec3);
+            m.redraw();
+        }
+
+        hours3 = newHours3;
+        min3 = newMin3;
+        sec3 = newSec3;
+        m.redraw(); 
+    }
 
     function pauseCountdown3() {
         clearInterval(timer3);

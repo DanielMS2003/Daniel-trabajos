@@ -8,7 +8,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-  
+
 .calculator {
     width: 220px;
     border: 1px solid #ccc;
@@ -18,7 +18,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
 }
-  
+
 .calculator input[type="button"] {
     width: 48%;
     padding: 10px;
@@ -29,11 +29,11 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-  
+
 .calculator input[type="button"]:hover {
     background-color: #d2d2d2;
 }
-  
+
 .calculator input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -45,13 +45,13 @@ body {
     text-align: right;
     box-sizing: border-box;
 }
-  
+
 .calculator .button-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5px;
 }
-  
+
 .calculator .user-input {
     width: 100%;
     padding: 10px;
@@ -65,7 +65,7 @@ body {
     overflow-x: auto;
     white-space: nowrap;
 }
-  
+
 .calculator .row {
     display: flex;
     justify-content: space-between;

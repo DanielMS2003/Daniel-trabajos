@@ -50,7 +50,7 @@ function Clock() {
     }
 
     function startCountdown() {
-        if (!isRunning && !isPaused) { // Add a condition to check if the countdown is already running or paused
+        if (!isRunning && !isPaused) {
             hours = parseInt(document.getElementById("hours-input").value);
             min = parseInt(document.getElementById("minutes-input").value);
             sec = parseInt(document.getElementById("seconds-input").value);
@@ -58,8 +58,8 @@ function Clock() {
             clearInterval(timer);
             timer = setInterval(updateTime, 100);
             isRunning = true;
-        } else if (isPaused) { // Add a condition to resume the countdown if it is paused
-            targetTime = new Date().getTime() + remainingTime; // remainingTime is the time left before the countdown was paused
+        } else if (isPaused) {
+            targetTime = new Date().getTime() + remainingTime;
             clearInterval(timer);
             timer = setInterval(updateTime, 100);
             isPaused = false;
@@ -73,9 +73,9 @@ function Clock() {
 
         if (remainingTime <= 0) {
             clearInterval(timer);
-            document.body.classList.add("explode"); // Add the class to trigger the explosion animation
+            document.body.classList.add("explode");
             setTimeout(() => {
-            document.body.classList.remove("explode"); // Remove the class after the animation has finished
+            document.body.classList.remove("explode");
             alert("Countdown has finished!");
             reset();
             }, 500);
@@ -86,7 +86,6 @@ function Clock() {
         let newMin = Math.floor((remainingTime / (1000 * 60)) % 60);
         let newSec = Math.floor((remainingTime / 1000) % 60);
 
-        // Update the seconds only if the elapsed time is greater than or equal to 500ms
         let elapsedMs = currentTime % 1000;
         if (remainingTime >= 500 && (elapsedMs + remainingTime >= 1000)) {
             newSec = Math.ceil(newSec);
@@ -108,14 +107,14 @@ function Clock() {
         m.redraw();
     }
 
-    function pauseCountdown() { // Add a function to pause the countdown
+    function pauseCountdown() {
         clearInterval(timer);
-        remainingTime = targetTime - new Date().getTime(); // Calculate the remaining time before pausing
+        remainingTime = targetTime - new Date().getTime();
         isPaused = true;
         isRunning = false;
     }
 
-    function resumeCountdown() { // Add a function to resume the countdown
+    function resumeCountdown() {
         startCountdown();
     }
 
@@ -128,31 +127,26 @@ function Clock() {
     }
 
     function setTime(newHours, newMin, newSec) {
-        // Set the hours, minutes, and seconds
         hours = newHours;
         min = newMin;
         sec = newSec;
 
-        // Update the hours, minutes, and seconds elements
         document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
         document.getElementById("minutes").innerText = min.toString().padStart(2, '0');
         document.getElementById("seconds").innerText = sec.toString().padStart(2, '0');
         
-        // Calculate the new target time and remaining time
         let currentTime = new Date().getTime();
         let targetDate = new Date();
         targetDate.setHours(hours, min, sec, 0);
         targetTime = targetDate.getTime();
         let remainingTime = targetTime - currentTime;
 
-        // If the remaining time is less than 0, add a day to the target date
         if (remainingTime < 0) {
             targetDate.setDate(targetDate.getDate() + 1);
             targetTime = targetDate.getTime();
             remainingTime = targetTime - currentTime;
         }
 
-        // Start the timer
         isRunning = true;
         timer = setInterval(updateTime, 100);
     }
@@ -166,7 +160,7 @@ function Clock() {
         isRunning = true;
         targetTime = new Date().getTime() + (hours * 60 * 60 * 1000) + (min * 60 * 1000) + (sec * 1000);
 
-        updateTime(); // Call this immediately to prevent skipping the first second
+        updateTime();
 
         timer = setInterval(() => {
             updateTime();
@@ -174,10 +168,8 @@ function Clock() {
         }, 1000);
     }
 
-// Set the target time based on the provided hours, minutes, and seconds.
 setTargetTime(new Date().getTime() + ((hours * 60 * 60) + (min * 60) + sec) * 1000);
 
-// Define the view of the component.
 return {
         view: () => {
             let hourList = [];

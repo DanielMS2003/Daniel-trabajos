@@ -3,14 +3,11 @@ function binaryToDecimal() {
     var decimalOutput = document.getElementById('decimalOutput');
     var errorOutput = document.getElementById('binaryError');
 
-    // Check if the input is a valid binary number
     var isValidBinary = /^[01]+$/.test(binaryInput);
 
     if (isValidBinary) {
-        // Convert binary to decimal
         var decimal = parseInt(binaryInput, 2);
 
-        // Display the decimal output
         decimalOutput.textContent = decimal;
         errorOutput.textContent = '';
     } else {
@@ -23,14 +20,11 @@ function decimalToBinary() {
     var decimalInput = document.getElementById('decimalInput').value;
     var binaryOutput = document.getElementById('binaryOutput');
 
-    // Check if the input is a valid decimal number
     var isValidDecimal = /^\d+$/.test(decimalInput);
 
     if (isValidDecimal) {
-        // Convert decimal to binary
         var binary = (decimalInput >>> 0).toString(2);
 
-        // Display the binary output
         binaryOutput.textContent = binary;
     } else {
         binaryOutput.textContent = '';
